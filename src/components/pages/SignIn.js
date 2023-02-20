@@ -21,11 +21,11 @@ function SignIn() {
                     <h2>LOGIN</h2>
                     <form>
                         <div className='user-box'>
-                            <input type='text' name='' required='' onChange={(event) => {setLoginEmail(event.target.value);}}/>
+                            <input type='email' name='' required='' onChange={(event) => {setLoginEmail(event.target.value);}}/>
                             <label>Email</label>
                         </div>
                         <div className='user-box'>
-                            <input type='text' name='' required='' onChange={(event) => {setLoginPassword(event.target.value);}}/>
+                            <input type='password' name='' required='' onChange={(event) => {setLoginPassword(event.target.value);}}/>
                             <label>Password</label>
                         </div>
                         <div className='button-form'>
@@ -37,7 +37,6 @@ function SignIn() {
                         </div>
                     </form>
                 </div>
-                {/* <button onClick={signInWithGoogle} src='/sign-in'>Sign in with Google</button> */}
             </div>
         </>
     )

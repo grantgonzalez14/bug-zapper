@@ -20,8 +20,7 @@ function SignUp() {
                     registerEmail,
                     registerPassword
                 );
-                
-                console.log(user);
+                                
                 navigate('/');
             }
             else {
@@ -35,35 +34,37 @@ function SignUp() {
 
     return (
         <>
-            <div className='form'>
-                <span className='form-title'>SIGN UP</span>
-                <form action=''>
-                    <div className='form-input'>
-                        <i className='ri-user-line'/>
-                        <input type='text' placeholder='Name'/>
-                        <span className='bar'/>
-                    </div>
-                    <div className='form-input'>
-                        <i className='ri-mail-line'/>
-                        <input type='text' placeholder='Email' onChange={(event) => {setRegisterEmail(event.target.value);}}/>
-                        <span className='bar'/>
-                    </div>
-                    <div className='form-input'>
-                        <i className='ri-lock-line'/>
-                        <input type='password' placeholder='Password' onChange={(event) => {setRegisterPassword(event.target.value);}}/>
-                        <span className='bar'/>
-                    </div>
-                    <div className='form-input'>
-                        <i className='ri-lock-line'/>
-                        <input type='password' placeholder='Confirm Password' onChange={(event) => {setConfirmPassword(event.target.value);}}/>
-                        <span className='bar'/>
-                    </div>
-                    <button type='button' className='form-button' onClick={register}>Sign Up</button>
-                    <span className='form-switch'>
-                        Already have an account?
-                        <Link className='link' to='/sign-in'>Login</Link>
-                    </span>
-                </form>
+            <div className='sign-up-container'>
+                <div className='form'>
+                    <span className='form-title'>SIGN UP</span>
+                    <form action=''>
+                        <div className='form-input'>
+                            <i className='ri-user-line'/>
+                            <input type='text' placeholder='Name'/>
+                            <span className='bar'/>
+                        </div>
+                        <div className='form-input'>
+                            <i className='ri-mail-line'/>
+                            <input type='text' placeholder='Email' onChange={(event) => {setRegisterEmail(event.target.value);}}/>
+                            <span className='bar'/>
+                        </div>
+                        <div className='form-input'>
+                            <i className='ri-lock-line'/>
+                            <input type='password' placeholder='Password' onChange={(event) => {setRegisterPassword(event.target.value);}}/>
+                            <span className='bar'/>
+                        </div>
+                        <div className='form-input'>
+                            <i className='ri-lock-line'/>
+                            <input type='password' placeholder='Confirm Password' onChange={(event) => {setConfirmPassword(event.target.value);}}/>
+                            <span className='bar'/>
+                        </div>
+                        <button type='button' className='form-button' onClick={register}>Sign Up</button>
+                        <span className='form-switch'>
+                            Already have an account?
+                            <Link className='link' to='/sign-in'>Login</Link>
+                        </span>
+                    </form>
+                </div>
             </div>
         </>
     )
