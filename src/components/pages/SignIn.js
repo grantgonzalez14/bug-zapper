@@ -1,16 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import firebase from 'firebase/compat/app';
-// import 'firebase/auth';
+import { auth, logInWithEmailAndPassword, sendPasswordReset } from '../../Firebase';
 import './SignIn.css';
 
 function SignIn() {
-    // const auth = firebase.auth();
-
-    // const signInWithGoogle = () => {
-    //   const provider = new firebase.auth.GoogleAuthProvider();
-    //   auth.signInWithPopup(provider);
-    // }
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
   
@@ -29,10 +22,17 @@ function SignIn() {
                             <label>Password</label>
                         </div>
                         <div className='button-form'>
-                            <Link className='submit' to='/sign-in'>Submit</Link>
+                            <button className='submit' type='submit' onClick={() => logInWithEmailAndPassword(loginEmail, loginPassword)}>Submit</button>
+                            
+                        </div>
+                        <div className='register-forgot-password-container'>
                             <div className='register'>
                                 Don't have an account?
                                 <Link className='sign-up' to='/sign-up'>Register</Link>
+                            </div>
+                            <div className='register'>
+                                Forgot password?
+                                <Link className='sign-up' to='/forgot-password'>Reset Password</Link>
                             </div>
                         </div>
                     </form>

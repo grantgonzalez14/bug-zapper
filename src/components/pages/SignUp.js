@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../Firebase';
+import { auth, registerWithEmailAndPassword } from '../../Firebase';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
 
@@ -9,26 +9,16 @@ function SignUp() {
     const [registerEmail, setRegisterEmail] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [registerName, setRegisterName] = useState('');
     const navigate = useNavigate();
 
-    const register = async () => {
-        try {
-            if (registerPassword === confirmPassword) {
-
-                const user = await createUserWithEmailAndPassword(
-                    auth,
-                    registerEmail,
-                    registerPassword
-                );
-                                
-                navigate('/');
-            }
-            else {
-                console.log('Passwords do not match');
-            }
+    const register = () => {
+        if (registerPassword === confirmPassword) {
+            registerWithEmailAndPassword(registerName, registerEmail, registerPassword);
+            navigate('/');
         }
-        catch(error) {
-            console.log(error.message);
+        else { 
+            alert('Passwords do not match!'); 
         }
     }
 
@@ -40,7 +30,7 @@ function SignUp() {
                     <form action=''>
                         <div className='form-input'>
                             <i className='ri-user-line'/>
-                            <input type='text' placeholder='Name'/>
+                            <input type='text' placeholder='Name' onChange={(event) => {setRegisterName(event.target.value);}}/>
                             <span className='bar'/>
                         </div>
                         <div className='form-input'>

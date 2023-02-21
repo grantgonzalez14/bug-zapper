@@ -65,6 +65,7 @@ body {
 
 .submit {
     padding: 10px 20px;
+    background-color: #242026;
     color: #CBBDDB;
     font-size: 16px;
     text-decoration: none;
@@ -81,6 +82,7 @@ body {
     color: white;
     border-radius: 5px;
     box-shadow: 0 0 5px #8f7CEC, 0 0 50px #8F7CEC, 0 0 100px #8F7CEC;
+    cursor: pointer;
 }
 
 .button-form {
@@ -90,6 +92,9 @@ body {
 }
 
 .register {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
     font-size: 14px;
     text-decoration: none;
     color: #CBBDDB;
@@ -98,8 +103,21 @@ body {
     text-align: center;
 }
 
-.sign-up {
+.register-forgot-password-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.sign-up,
+.forgot-password {
     margin: auto;
     color: #8f7CEC;
     text-decoration: none;
+}
+
+.forgot-password {
+    background-color: #242026;
+    border: none;
+    cursor: pointer;
 }
