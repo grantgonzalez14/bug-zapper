@@ -1,11 +1,22 @@
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { auth, logInWithEmailAndPassword } from '../../Firebase';
+import { auth } from '../../Firebase';
 import './SignIn.css';
 
 function SignIn() {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
+    const [emailPasswordIncorrect, setEmailPasswordIncorrect] = useState(false);
+
+    const logInWithEmailAndPassword = async (email, password) => {
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+        }
+        catch(err) {
+            setEmailPasswordIncorrect(true);
+        }
+    }
   
     return (
         <>
@@ -21,8 +32,9 @@ function SignIn() {
                             <input type='password' name='' required='' placeholder=' ' onChange={(event) => {setLoginPassword(event.target.value);}}/>
                             <label>Password</label>
                         </div>
+                        {emailPasswordIncorrect && <p className='register'>Email or Password is incorrect</p>}
                         <div className='button-form'>
-                            <button className='submit' type='submit' onClick={() => logInWithEmailAndPassword(loginEmail, loginPassword)}>Submit</button>
+                            <button className='submit' type='button' onClick={() => logInWithEmailAndPassword(loginEmail, loginPassword)}>Submit</button>
                         </div>
                         <div className='register-forgot-password-container'>
                             <div className='register'>

@@ -6,6 +6,11 @@ body {
     background: black;
 }
 
+p.register {
+    margin: -30px 0 40px 0;
+    width: 100%;
+}
+
 .login-screen {
     width: 100vw;
     height: 100vh;
