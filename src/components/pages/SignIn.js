@@ -21,11 +21,11 @@ function SignIn() {
                     <h2>LOGIN</h2>
                     <form>
                         <div className='user-box'>
-                            <input type='email' name='' required='' onChange={(event) => {setLoginEmail(event.target.value);}}/>
+                            <input type='email' name='' required='' placeholder=' ' onChange={(event) => {setLoginEmail(event.target.value);}}/>
                             <label>Email</label>
                         </div>
                         <div className='user-box'>
-                            <input type='password' name='' required='' onChange={(event) => {setLoginPassword(event.target.value);}}/>
+                            <input type='password' name='' required='' placeholder=' ' onChange={(event) => {setLoginPassword(event.target.value);}}/>
                             <label>Password</label>
                         </div>
                         <div className='button-form'>

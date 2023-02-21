@@ -55,11 +55,8 @@ body {
     transition: all 0.5s;
 }
 
-.login-box .user-box input:focus + label {
-/* Deleting the line below makes the animation work
-   however it goes back down when the field is not
-   focused on. */
-/* .login-box .user-box input:valid + label { */
+.login-box .user-box input:focus + label,
+.login-box .user-box input:not(:placeholder-shown) + label {
     top: -85px;
     left: 0;
     color: #8F7CEC;
