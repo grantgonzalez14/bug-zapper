@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { auth, logInWithEmailAndPassword, sendPasswordReset } from '../../Firebase';
+import { auth, logInWithEmailAndPassword } from '../../Firebase';
 import './SignIn.css';
 
 function SignIn() {
@@ -23,7 +23,6 @@ function SignIn() {
                         </div>
                         <div className='button-form'>
                             <button className='submit' type='submit' onClick={() => logInWithEmailAndPassword(loginEmail, loginPassword)}>Submit</button>
-                            
                         </div>
                         <div className='register-forgot-password-container'>
                             <div className='register'>
