@@ -12,7 +12,6 @@ function Home() {
           <p>A web application for tracking all those nasty bugs in your code!</p>
           <div className='hero-btns'>
               <Button className='btns' buttonStyle='btn--outline' buttonSize='btn--large'>GET STARTED</Button>
-              <Button className='btns' buttonStyle='btn--primary' buttonSize='btn--large'>Watch Trailer <i className='far fa-play-circle' /></Button>
           </div>
       </div>
     )

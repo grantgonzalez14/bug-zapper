@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../Firebase';
 import './SignIn.css';
 
@@ -8,10 +8,12 @@ function SignIn() {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
     const [emailPasswordIncorrect, setEmailPasswordIncorrect] = useState(false);
+    const navigate = useNavigate();
 
     const logInWithEmailAndPassword = async (email, password) => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
+            navigate('/');
         }
         catch(err) {
             setEmailPasswordIncorrect(true);
