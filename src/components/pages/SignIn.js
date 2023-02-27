@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../Firebase';
+import Navbar from '../Navbar';
 import './SignIn.css';
 
 function SignIn() {
@@ -22,6 +23,7 @@ function SignIn() {
   
     return (
         <>
+            <Navbar />
             <div className='login-screen'>
                 <div className='login-box'>
                     <h2>LOGIN</h2>
@@ -53,7 +55,6 @@ function SignIn() {
             </div>
         </>
     )
-  
 }
 
 export default SignIn;

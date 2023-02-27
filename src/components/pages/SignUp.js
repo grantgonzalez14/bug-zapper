@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, registerWithEmailAndPassword } from '../../Firebase';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Navbar';
 import './SignUp.css';
 
 function SignUp() {
@@ -24,6 +24,7 @@ function SignUp() {
 
     return (
         <>
+            <Navbar />
             <div className='sign-up-container'>
                 <div className='form'>
                     <span className='form-title'>SIGN UP</span>
