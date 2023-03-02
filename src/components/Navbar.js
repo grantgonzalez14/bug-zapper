@@ -34,7 +34,7 @@ function Navbar() {
               setLoggedInStatus(false);
             }
         });
-    }, [])
+    }, []);
 
     window.addEventListener('resize', showButton);
 
