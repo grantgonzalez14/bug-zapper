@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile } from "firebase/auth";
-import { getFirestore, query, getDocs, collection, where, addDoc } from "firebase/firestore";
+import { getFirestore, query, getDocs, collection, where, addDoc, doc, deleteDoc, updateDoc } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyD0obPc94tYkfr5FYI6838cjGWeeZ9mYPc",
@@ -66,15 +66,27 @@ const addNewTask = async (task) => {
     try {
         const user = auth.currentUser;
 
-        await addDoc(collection(db, 'tasks'), {
+        const docRef = await addDoc(collection(db, 'tasks'), {
             uid: user.uid,
             title: task.title,
             completed: task.completed
         });
+
+        await updateDoc(docRef, {id: docRef.id});
     }
     catch (err) {
         console.error(err);
         alert(err.message);
+    }
+}
+
+const removeTask = async (task) => {
+    try {
+        await deleteDoc(doc(db, 'tasks', task.id));
+    }
+    catch (err) {
+        console.error(err);
+        alert(err);
     }
 }
 
@@ -98,4 +110,13 @@ const getTaskList = async () => {
     }
 }
 
-export { auth, db, logInWithEmailAndPassword, registerWithEmailAndPassword, sendPasswordReset, logout, addNewTask, getTaskList };
+export { 
+    auth, 
+    db, 
+    logInWithEmailAndPassword, 
+    registerWithEmailAndPassword, 
+    sendPasswordReset, 
+    logout, 
+    addNewTask, 
+    removeTask,
+    getTaskList };

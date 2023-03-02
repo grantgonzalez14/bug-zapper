@@ -12,12 +12,9 @@ function BugList() {
     const createNewTask = () => {
         if (!newTaskTitle) return;
 
-        const newTask = {title: newTaskTitle, completed: false};
-        const newTaskList = [...taskList, newTask];
-
-        setTaskList(newTaskList);
         setNewTaskTitle('');
-        addNewTask(newTask);
+        addNewTask({title: newTaskTitle, completed: false});
+        getTaskList().then((tasks) => setTaskList(tasks));
         document.getElementById('new-task-input').value = '';
         
     }
@@ -41,14 +38,14 @@ function BugList() {
                         <button type='submit' className='btn-create-task' onClick={createNewTask}>Create</button>
                     </div>
                     {taskList.map((task, index) => (
-                        <Task task={task} key={index}/>
+                        <Task task={task} index={index} key={index}/>
                     ))}
                 </div>
                 <div className='bl-in-progress'>
                     <h1>IN PROGRESS</h1>
                 </div>
                 <div className='bl-done'>
-                        <h1>BUGS ZAPPED</h1>
+                    <h1>BUGS ZAPPED</h1>
                 </div>
             </div>
         </>
