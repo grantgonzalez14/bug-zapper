@@ -26,16 +26,17 @@ function Navbar() {
         showButton();
     }, []);
 
-    window.addEventListener('resize', showButton);
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+              setLoggedInStatus(true);
+            } else {
+              setLoggedInStatus(false);
+            }
+        });
+    }, [])
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setLoggedInStatus(true);
-          console.log(user);
-        } else {
-          setLoggedInStatus(false);
-        }
-    });
+    window.addEventListener('resize', showButton);
 
     return (
         <>
@@ -48,24 +49,31 @@ function Navbar() {
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                    <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                                Home
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/bug-list' className='nav-links' onClick={closeMobileMenu}>
-                                Bug List
-                            </Link>
-                        </li>
+                        {loggedInStatus &&
+                            <li className='nav-item'>
+                                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                    Home
+                                </Link>
+                            </li>
+                        }
+                        {loggedInStatus &&
+                            <li className='nav-item'>
+                                <Link to='/bug-list' className='nav-links' onClick={closeMobileMenu}>
+                                    Bug List
+                                </Link>
+                            </li>
+                        }
+                        {/* Not quite sure where/when this block appears, assuming mobile. */}
                         <li className='nav-item'>
                             <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
                                 Sign Up
                             </Link>
                         </li>
                     </ul>
-                    {button && <Button buttonStyle='btn--outline' src='/sign-up'>SIGN UP</Button>}
-                    {button && <Button buttonStyle='btn--outline' src='/sign-in'>SIGN IN</Button>}
+                    {!loggedInStatus && button && <Button buttonStyle='btn--outline' src='/sign-up'>SIGN UP</Button>}
+                    {!loggedInStatus && button && <Button buttonStyle='btn--outline' src='/sign-in'>SIGN IN</Button>}
+                    {loggedInStatus && button && <Button buttonStyle='btn--outline' src='/sign-up'>ACCOUNT</Button>}
+                    {loggedInStatus && button && <Button buttonStyle='btn--outline' src='/' onClick={logout}>SIGN OUT</Button>}
                 </div>
             </nav>
         </>
