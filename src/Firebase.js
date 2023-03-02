@@ -62,4 +62,39 @@ const logout = () => {
     signOut(auth);
 };
 
-export { auth, db, logInWithEmailAndPassword, registerWithEmailAndPassword, sendPasswordReset, logout };
+const addNewTask = async (task) => {
+    try {
+        const user = auth.currentUser;
+
+        await addDoc(collection(db, 'tasks'), {
+            uid: user.uid,
+            title: task.title,
+            completed: task.completed
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
+const getTaskList = async () => {
+    try {
+        const user = auth.currentUser;
+        const q = query(collection(db, 'tasks'), where('uid', '==', user.uid));
+        const querySnapshot = await getDocs(q);
+        let taskList = [];
+
+        querySnapshot.forEach((doc) => {
+            taskList.push(doc.data());
+        });
+
+        return taskList;
+    }
+    catch (err) {
+        console.error(err);
+        alert(err);
+    }
+}
+
+export { auth, db, logInWithEmailAndPassword, registerWithEmailAndPassword, sendPasswordReset, logout, addNewTask, getTaskList };
