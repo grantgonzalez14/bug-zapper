@@ -54,3 +54,9 @@
     transition: all 0.3s ease-out;
     cursor: pointer;
 }
+
+.empty-task-list {
+    margin: auto;
+    font-size: 72px;
+    opacity: 0.5;
+}

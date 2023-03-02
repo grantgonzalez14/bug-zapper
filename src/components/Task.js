@@ -1,8 +1,8 @@
 import React from 'react';
-import { removeTask } from '../Firebase';
+// import { removeTask } from '../Firebase';
 import './Task.css';
 
-function Task({task, index}) {
+function Task({task, index, callBackFunction}) {
     return (
         <>
             <div className='task-item'>
@@ -14,7 +14,7 @@ function Task({task, index}) {
                     <option value='In Progress'>In Progress</option>
                     <option value='Resolved'>Resolved</option>
                 </select>
-                <button className='btn-remove-task' onClick={() => removeTask(task)}>Remove</button>
+                <button className='btn-remove-task' onClick={() => callBackFunction(task)}>Remove</button>
             </div>
         </>
     )

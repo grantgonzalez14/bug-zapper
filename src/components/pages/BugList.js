@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import Task from '../Task';
-import { auth, addNewTask, getTaskList } from '../../Firebase';
+import { auth, addNewTask, getTaskList, removeTask } from '../../Firebase';
 import './BugList.css';
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -17,6 +17,11 @@ function BugList() {
         getTaskList().then((tasks) => setTaskList(tasks));
         document.getElementById('new-task-input').value = '';
         
+    }
+
+    const deleteTask = (taskData) => {
+        removeTask(taskData);
+        getTaskList().then((tasks) => setTaskList(tasks));
     }
 
     useEffect(() => {
@@ -37,8 +42,9 @@ function BugList() {
                         <input id='new-task-input' className='new-task-input' type='text' placeholder='Enter New Task' onChange={(event) => {setNewTaskTitle(event.target.value);}}/>
                         <button type='submit' className='btn-create-task' onClick={createNewTask}>Create</button>
                     </div>
+                    {taskList.length === 0 && <h1 className='empty-task-list'>Nothing to do here!</h1>}
                     {taskList.map((task, index) => (
-                        <Task task={task} index={index} key={index}/>
+                        <Task task={task} index={index} key={index} callBackFunction={() => deleteTask(task)}/>
                     ))}
                 </div>
                 <div className='bl-in-progress'>
