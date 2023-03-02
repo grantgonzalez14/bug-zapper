@@ -1,0 +1,25 @@
+.bl-screen {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 100%;
+    width: 100vw;
+}
+
+.bl-tasks,
+.bl-in-progress,
+.bl-done {
+    display: flex;
+    flex-direction: column;
+    width: 33.35%;
+    border-style: solid;
+    border: 0 5px;
+    align-items: center;
+    padding-top: 1.5rem;
+    padding-bottom: 89vh;
+    overflow-y: auto;
+}
+
+.new-task-input {
+    margin-top: 0.5rem;
+}

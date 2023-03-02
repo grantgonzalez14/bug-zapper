@@ -14,8 +14,6 @@ function Home() {
       onAuthStateChanged(auth, (user) => {
           if (user) {
             setLoggedInStatus(true);
-            // console.log(user);
-            // console.log(auth);
           } else {
             setLoggedInStatus(false);
           }
