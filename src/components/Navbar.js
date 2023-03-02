@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
-// import { auth, logout } from '../Firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, logout } from '../Firebase';
 import './Navbar.css';
 
 function Navbar() {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
+    const [loggedInStatus, setLoggedInStatus] = useState(false);
 
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
@@ -25,6 +27,15 @@ function Navbar() {
     }, []);
 
     window.addEventListener('resize', showButton);
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setLoggedInStatus(true);
+          console.log(user);
+        } else {
+          setLoggedInStatus(false);
+        }
+    });
 
     return (
         <>
