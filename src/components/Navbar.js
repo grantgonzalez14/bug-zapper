@@ -30,7 +30,8 @@ function Navbar() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
               setLoggedInStatus(true);
-            } else {
+            } 
+            else {
               setLoggedInStatus(false);
             }
         });

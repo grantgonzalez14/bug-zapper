@@ -93,7 +93,8 @@ const getTaskList = async () => {
     }
     catch (err) {
         console.error(err);
-        alert(err);
+        alert(err.message);
+        return [];
     }
 }
 

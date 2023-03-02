@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import Task from '../Task';
-import { addNewTask, getTaskList } from '../../Firebase';
+import { auth, addNewTask, getTaskList } from '../../Firebase';
 import './BugList.css';
+import { onAuthStateChanged } from 'firebase/auth';
 
 function BugList() {
     const [newTaskTitle, setNewTaskTitle] = useState('');
@@ -22,7 +23,11 @@ function BugList() {
     }
 
     useEffect(() => {
-        getTaskList().then((tasks) => setTaskList(tasks));
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                getTaskList().then((tasks) => setTaskList(tasks));
+            }
+        });
     }, []);
 
     return (
@@ -30,7 +35,7 @@ function BugList() {
             <Navbar />
             <div className='bl-screen'>
                 <div className='bl-tasks'>
-                    <h1>TASKS</h1>
+                    <h1>BUGS</h1>
                     <div className='new-task-input-container'>
                         <input id='new-task-input' className='new-task-input' type='text' placeholder='Enter New Task' onChange={(event) => {setNewTaskTitle(event.target.value);}}/>
                         <button type='submit' className='btn-create-task' onClick={createNewTask}>Create</button>
@@ -39,8 +44,12 @@ function BugList() {
                         <Task task={task} key={index}/>
                     ))}
                 </div>
-                <div className='bl-in-progress'></div>
-                <div className='bl-done'></div>
+                <div className='bl-in-progress'>
+                    <h1>IN PROGRESS</h1>
+                </div>
+                <div className='bl-done'>
+                        <h1>BUGS ZAPPED</h1>
+                </div>
             </div>
         </>
     )
