@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, addNewTask, getTaskList, removeTask, changeTaskStatus } from '../../Firebase';
 import Navbar from '../Navbar';
 import Task from '../Task';
-import { auth, addNewTask, getTaskList, removeTask } from '../../Firebase';
 import './BugList.css';
-import { onAuthStateChanged } from 'firebase/auth';
+
+
 
 function BugList() {
+    const navigate = useNavigate();
+
     const [newTaskTitle, setNewTaskTitle] = useState('');
-    const [taskList, setTaskList] = useState([]);
+    const [taskList, setTaskList] = useState({
+        toDo: [],
+        inProgress: [],
+        resolved: []
+    });
 
     const createNewTask = () => {
         if (!newTaskTitle) return;
@@ -24,13 +33,23 @@ function BugList() {
         getTaskList().then((tasks) => setTaskList(tasks));
     }
 
+    const changeStatus = (taskData, newStatus) => {
+        changeTaskStatus(taskData, newStatus)
+            .then(() => {
+                getTaskList().then((tasks) => setTaskList(tasks));
+        });
+    }
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 getTaskList().then((tasks) => setTaskList(tasks));
             }
+            else {
+                navigate('/sign-in');
+            }
         });
-    }, []);
+    }, [navigate]);
 
     return (
         <>
@@ -42,16 +61,26 @@ function BugList() {
                         <input id='new-task-input' className='new-task-input' type='text' placeholder='Enter New Task' onChange={(event) => {setNewTaskTitle(event.target.value);}}/>
                         <button type='submit' className='btn-create-task' onClick={createNewTask}>Create</button>
                     </div>
-                    {taskList.length === 0 && <h1 className='empty-task-list'>Nothing to do here!</h1>}
-                    {taskList.map((task, index) => (
-                        <Task task={task} index={index} key={index} callBackFunction={() => deleteTask(task)}/>
+                    {taskList.toDo.length === 0 && <h1 className='empty-task-list'>Nothing to do here!</h1>}
+                    {taskList.toDo.map((task, index) => (
+                        <Task task={task} key={index} removeFunction={deleteTask} changeStatusFunction={changeStatus}/>
                     ))}
                 </div>
                 <div className='bl-in-progress'>
                     <h1>IN PROGRESS</h1>
+                    <div className='divider'></div>
+                    {taskList.inProgress.length === 0 && <h1 className='empty-task-list'>Nothing to do here!</h1>}
+                    {taskList.inProgress.map((task, index) => (
+                        <Task task={task} key={index} removeFunction={deleteTask} changeStatusFunction={changeStatus}/>
+                    ))}
                 </div>
                 <div className='bl-done'>
                     <h1>BUGS ZAPPED</h1>
+                    <div className='divider'></div>
+                    {taskList.resolved.length === 0 && <h1 className='empty-task-list'>Nothing to do here!</h1>}
+                    {taskList.resolved.map((task, index) => (
+                        <Task task={task} key={index} removeFunction={deleteTask} changeStatusFunction={changeStatus}/>
+                    ))}
                 </div>
             </div>
         </>

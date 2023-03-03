@@ -1,20 +1,32 @@
 import React from 'react';
-// import { removeTask } from '../Firebase';
 import './Task.css';
 
-function Task({task, index, callBackFunction}) {
+function Task({task, removeFunction, changeStatusFunction}) {
     return (
         <>
             <div className='task-item'>
                 <ul>
                     <li>{task.title}</li>
                 </ul>
-                <select className='dropdown-menu'>
-                    <option defaultValue='To-Do'>To-Do</option>
-                    <option value='In Progress'>In Progress</option>
-                    <option value='Resolved'>Resolved</option>
-                </select>
-                <button className='btn-remove-task' onClick={() => callBackFunction(task)}>Remove</button>
+                {task.status === 'to-do' && 
+                <select className='dropdown-menu' onChange={(event) => changeStatusFunction(task, event.target.value)}>
+                    <option value='to-do'>To-Do</option>
+                    <option value='in-progress'>In Progress</option>
+                    <option value='resolved'>Resolved</option>
+                </select>}
+                {task.status === 'in-progress' &&
+                <select className='dropdown-menu' onChange={(event) => changeStatusFunction(task, event.target.value)}>
+                    <option value='in-progress'>In Progress</option>
+                    <option value='to-do'>To-Do</option>
+                    <option value='resolved'>Resolved</option>
+                </select>}
+                {task.status === 'resolved' &&
+                <select className='dropdown-menu' onChange={(event) => changeStatusFunction(task, event.target.value)}>
+                    <option value='resolved'>Resolved</option>
+                    <option value='to-do'>To-Do</option>
+                    <option value='in-progress'>In Progress</option>
+                </select>}
+                <button className='btn-remove-task' onClick={() => removeFunction(task)}>Remove</button>
             </div>
         </>
     )

@@ -69,6 +69,7 @@ const addNewTask = async (task) => {
         const docRef = await addDoc(collection(db, 'tasks'), {
             uid: user.uid,
             title: task.title,
+            status: 'to-do',
             completed: task.completed
         });
 
@@ -90,16 +91,44 @@ const removeTask = async (task) => {
     }
 }
 
+const changeTaskStatus = async (task, newStatus) => {
+    try {
+        const docRef = doc(db, 'tasks', task.id);
+        await updateDoc(docRef, {status: newStatus})
+    }
+    catch (err) {
+        console.error(err);
+        alert(err);
+    }
+}
+
 const getTaskList = async () => {
     try {
         const user = auth.currentUser;
         const q = query(collection(db, 'tasks'), where('uid', '==', user.uid));
         const querySnapshot = await getDocs(q);
-        let taskList = [];
+        let taskList = {};
+        let taskListToDo = [];
+        let taskListInProgress = [];
+        let taskListResolved = [];
 
         querySnapshot.forEach((doc) => {
-            taskList.push(doc.data());
+            if (doc.data().status === 'to-do') {
+                taskListToDo.push(doc.data());
+            }
+            else if (doc.data().status === 'in-progress') {
+                taskListInProgress.push(doc.data());
+            }
+            else if (doc.data().status === 'resolved') {
+                taskListResolved.push(doc.data());
+            }
         });
+
+        taskList = {
+            toDo: taskListToDo,
+            inProgress: taskListInProgress,
+            resolved: taskListResolved
+        }
 
         return taskList;
     }
@@ -119,4 +148,5 @@ export {
     logout, 
     addNewTask, 
     removeTask,
+    changeTaskStatus,
     getTaskList };
