@@ -135,7 +135,7 @@
     text-decoration: underline;
 }
 
-@media screen and (min-width: 43.75em) {
+@media screen and (min-width: 960px) {
     .form::before {
         height: 30rem;
     }
@@ -149,5 +149,41 @@
         transform: translateX(10rem);
         border-radius: inherit;
         box-shadow: inherit;
+    }
+}
+
+@media screen and (max-width: 959px) {
+    .form {
+        max-height: 40rem;
+        padding: 4rem 0;
+    }
+
+    .form > form {
+        border-radius: inherit;
+        max-height: 26rem;
+    }
+
+    .form-button {
+        margin: 1.5rem auto;
+    }
+
+    .form-title {
+        color: var(--medium-purple);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .sign-up-container {
+        place-items: center;
+        justify-content: center;
+    }
+
+    .form {
+        max-width: 20rem;
+        padding: 3rem 0;
+    }
+
+    .form-button {
+        margin: 1rem auto;
     }
 }
