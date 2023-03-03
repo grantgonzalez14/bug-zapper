@@ -70,13 +70,33 @@
     margin: 0.5rem;
 }
 
+.page-selector-container {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.page-selector {
+    margin-top: 40px;
+    width: 200px;
+}
+
+.page-selector:active {
+    color: white;
+    background-color: var(--raisin-black);
+}
+
 @media screen and (max-width: 960px) {
+    .bl-screen {
+        flex-direction: column;
+        height: calc(100vh - 80px);
+    }
+
     .bl-tasks,
     .bl-in-progress,
     .bl-done {
-        height: 0;
-        width: 0;
+        height: 100%;
+        width: 100%;
+        border: none;
     }
-
-    
 }
