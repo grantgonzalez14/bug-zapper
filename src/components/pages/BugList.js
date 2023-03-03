@@ -25,7 +25,6 @@ function BugList() {
         addNewTask({title: newTaskTitle, completed: false});
         getTaskList().then((tasks) => setTaskList(tasks));
         document.getElementById('new-task-input').value = '';
-        
     }
 
     const deleteTask = (taskData) => {

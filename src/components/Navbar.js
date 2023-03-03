@@ -73,7 +73,7 @@ function Navbar() {
                     </ul>
                     {!loggedInStatus && button && <Button buttonStyle='btn--outline' src='/sign-up'>SIGN UP</Button>}
                     {!loggedInStatus && button && <Button buttonStyle='btn--outline' src='/sign-in'>SIGN IN</Button>}
-                    {loggedInStatus && button && <Button buttonStyle='btn--outline' src='/sign-up'>ACCOUNT</Button>}
+                    {loggedInStatus && button && <Button buttonStyle='btn--outline' src='/account'>ACCOUNT</Button>}
                     {loggedInStatus && button && <Button buttonStyle='btn--outline' src='/' onClick={logout}>SIGN OUT</Button>}
                 </div>
             </nav>

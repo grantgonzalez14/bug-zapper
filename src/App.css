@@ -1,3 +1,8 @@
+:root {
+  --gunmetal: #282c34;
+  --sky-blue-crayola: #61dafb;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +19,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--gunmetal);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +30,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: var(--sky-blue-crayola);
 }
 
 @keyframes App-logo-spin {

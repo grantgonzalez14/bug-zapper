@@ -1,0 +1,15 @@
+:root {
+    --medium-purple: #8F7CEC;
+    --raisin-black: #242026;
+    --pastel-red: #FC6767;
+    --quick-silver: #A1A1A1;
+}
+
+.settings-container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: calc(100vh - 80px);
+    justify-content: center;
+    color: white;
+}
