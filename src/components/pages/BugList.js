@@ -113,9 +113,9 @@ function BugList() {
                 {isMobile &&
                     <>
                         <div className='page-selector-container'>
-                            <button className='page-selector btn-create-task' onClick={() => setActive('tasks')}>Tasks</button>
-                            <button className='page-selector btn-create-task' onClick={() => setActive('in-progress')}>In Progress</button>
-                            <button className='page-selector btn-create-task' onClick={() => setActive('resolved')}>Bugs Zapped</button>
+                            <button className={tasksActive ? 'page-selector-active btn-create-task' : 'page-selector btn-create-task'} onClick={() => setActive('tasks')}>Tasks</button>
+                            <button className={inProgressActive ? 'page-selector-active btn-create-task' : 'page-selector btn-create-task'} onClick={() => setActive('in-progress')}>In Progress</button>
+                            <button className={resolvedActive ? 'page-selector-active btn-create-task' : 'page-selector btn-create-task'} onClick={() => setActive('resolved')}>Bugs Zapped</button>
                         </div>
                         <BugListTasks active={tasksActive} />
                         <BugListInProgress active={inProgressActive} />
