@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, editInformation } from '../../Firebase';
 import { onAuthStateChanged } from 'firebase/auth';
-import { Button } from '../Button';
 import Navbar from '../Navbar';
 import './Account.css';
 import '../Button.css';
