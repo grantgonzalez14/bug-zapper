@@ -13,6 +13,11 @@ function Navbar() {
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
 
+    const signOutCloseMobileMenu = () => {
+        logout();
+        closeMobileMenu();
+    }
+
     const showButton = () => {
         if (window.innerWidth <= 960) {
             setButton(false);
@@ -52,24 +57,53 @@ function Navbar() {
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         {loggedInStatus &&
                             <li className='nav-item'>
-                                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                <Link to='/' className={button ? 'nav-links': 'nav-links-mobile'} onClick={closeMobileMenu}>
                                     Home
                                 </Link>
                             </li>
                         }
                         {loggedInStatus &&
                             <li className='nav-item'>
-                                <Link to='/bug-list' className='nav-links' onClick={closeMobileMenu}>
+                                <Link to='/bug-list' className={button ? 'nav-links': 'nav-links-mobile'} onClick={closeMobileMenu}>
                                     Bug List
                                 </Link>
                             </li>
                         }
-                        {/* Not quite sure where/when this block appears, assuming mobile. */}
-                        <li className='nav-item'>
-                            <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
-                                Sign Up
-                            </Link>
-                        </li>
+                        {loggedInStatus &&
+                            <li className='nav-item'>
+                                <Link to='/account' className='nav-links-mobile' onClick={closeMobileMenu}>
+                                    Account
+                                </Link>
+                            </li>
+                        }
+                        {loggedInStatus &&
+                            <li className='nav-item'>
+                                <Link to='/' className='nav-links-mobile' onClick={signOutCloseMobileMenu}>
+                                    Sign Out
+                                </Link>
+                            </li>
+                        }
+                        {!loggedInStatus &&
+                            <li className='nav-item'>
+                                <Link to='/' className='nav-links-mobile' onClick={closeMobileMenu}>
+                                    Home
+                                </Link>
+                            </li>
+                        }
+                        {!loggedInStatus && 
+                            <li className='nav-item'>
+                                <Link to='/sign-in' className='nav-links-mobile' onClick={closeMobileMenu}>
+                                    Sign In
+                                </Link>
+                            </li>
+                        }
+                        {!loggedInStatus &&
+                            <li className='nav-item'>
+                                <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
+                                    Sign Up
+                                </Link>
+                            </li>
+                        }
                     </ul>
                     {!loggedInStatus && button && <Button buttonStyle='btn--outline' src='/sign-up'>SIGN UP</Button>}
                     {!loggedInStatus && button && <Button buttonStyle='btn--outline' src='/sign-in'>SIGN IN</Button>}
