@@ -1,8 +1,6 @@
 :root {
     --medium-purple: #8F7CEC;
     --raisin-black: #242026;
-    --pastel-red: #FC6767;
-    --quick-silver: #A1A1A1;
 }
 
 .settings-container {
@@ -105,4 +103,51 @@
     left: 0;
     color: var(--medium-purple);
     font-size: 12px;
+}
+
+@media screen and (max-width: 960px) {
+    h1 {
+        font-size: 26px;
+    }
+    .info-container {
+        width: 500px;
+        padding: 20px;
+    }
+    
+    .info-container p {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    h1 {
+        font-size: 15px;
+    }
+    .info-container {
+        width: 300px;
+        padding: 20px 10px;
+    }
+    
+    .info-container p {
+        font-size: 12px;
+    }
+
+    .btn-edit {
+        background-color: transparent;
+        color: white;
+        padding: 4px 12px;
+        margin-left: auto;
+        border: 2px solid white;
+        transition: all 0.3s ease-out;
+        align-self: center;
+        font-size: 12px;
+        text-decoration: none;
+    }
+
+    .email-container .edit-email-box input,
+    .name-container .edit-name-box input,
+    .email-container .edit-email-box label,
+    .name-container .edit-name-box label {
+        font-size: 15px;
+    }
 }
