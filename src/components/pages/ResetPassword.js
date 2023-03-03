@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { sendPasswordReset } from '../../Firebase';
-import './ForgotPassword.css';
+import Navbar from '../Navbar';
+import './ResetPassword.css';
 
-function ForgotPassword() {
+function ResetPassword() {
     const [resetPasswordEmail, setResetPasswordEmail] = useState('');
 
     return (
         <>
+            <Navbar />
             <div className='fp-screen'>
                 <div className='fp-box'>
-                    <h2>FORGOT PASSWORD</h2>
+                    <h2>RESET PASSWORD</h2>
                     <form>
                         <div className='fp-email-box'>
                             <input type='email' name='' required='' placeholder=' ' onChange={(event) => {setResetPasswordEmail(event.target.value);}}/>
@@ -25,4 +27,4 @@ function ForgotPassword() {
     )
 }
 
-export default ForgotPassword
+export default ResetPassword;

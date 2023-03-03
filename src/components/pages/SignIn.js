@@ -47,7 +47,7 @@ function SignIn() {
                             </div>
                             <div className='register'>
                                 Forgot password?
-                                <Link className='sign-up' to='/forgot-password'>Reset Password</Link>
+                                <Link className='sign-up' to='/reset-password'>Reset Password</Link>
                             </div>
                         </div>
                     </form>

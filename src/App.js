@@ -4,7 +4,7 @@ import Home from './components/pages/Home';
 import SignIn from './components/pages/SignIn';
 import BugList from './components/pages/BugList';
 import SignUp from './components/pages/SignUp';
-import ForgotPassword from './components/pages/ForgotPassword';
+import ResetPassword from './components/pages/ResetPassword';
 import Account from './components/pages/Account';
 import 'firebase/firestore';
 import './App.css';
@@ -19,7 +19,7 @@ function App() {
           <Route path='/bug-list' element={<BugList/>}/>
           <Route path='/sign-in' element={<SignIn/>}/>
           <Route path='/sign-up' element={<SignUp/>}/>
-          <Route path='/forgot-password' element={<ForgotPassword/>}/>
+          <Route path='/reset-password' element={<ResetPassword/>}/>
           <Route path='/account' element={<Account/>}/>
         </Routes>
       </Router>

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, updateProfile, updateEmail } from "firebase/auth";
 import { getFirestore, query, getDocs, collection, where, addDoc, doc, deleteDoc, updateDoc } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -139,6 +139,25 @@ const getTaskList = async () => {
     }
 }
 
+const editInformation = async (field, info) => {
+    try {
+        const user = auth.currentUser;
+
+        if (field === 'name') {
+            await updateProfile(user, {
+                displayName: info
+            });
+        }
+        else if (field === 'email') {
+            await updateEmail(user, info);
+        }
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
 export { 
     auth, 
     db, 
@@ -149,4 +168,6 @@ export {
     addNewTask, 
     removeTask,
     changeTaskStatus,
-    getTaskList };
+    getTaskList,
+    editInformation
+};
