@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { isMobile } from 'react-device-detect';
 import { Button } from '../Button';
 import { auth } from '../../Firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import Navbar from '../Navbar';
 import './Home.css';
 import '../../App.css';
+
 
 
 function Home() {
@@ -24,7 +26,8 @@ function Home() {
       <>
           <Navbar />
           <div className='hero-container'>
-              <video src='videos/video-1.mp4' autoPlay loop muted />
+              {!isMobile && <video src='videos/video-1.mp4' autoPlay loop muted />}
+              {isMobile && <img src='images/Bug_Zapper_Mobile_Home_Background.png' alt='Background for Bug Zapper Home Screen Mobile'/>}
               <h1>BUG ZAPPER</h1>
               <p>A web application for tracking all those nasty bugs in your code!</p>
               {!loggedInStatus &&
