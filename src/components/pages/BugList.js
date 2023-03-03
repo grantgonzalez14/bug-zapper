@@ -6,12 +6,14 @@ import Navbar from '../Navbar';
 import Task from '../Task';
 import './BugList.css';
 
-
-
 function BugList() {
     const navigate = useNavigate();
 
+    const [width, setWidth] = useState(window.innerWidth);
     const [newTaskTitle, setNewTaskTitle] = useState('');
+    const [bugsActive, setBugsActive] = useState(false);
+    const [inProgressActive, setInProgressActive] = useState(false);
+    const [resolvedActive, setResovedActive] = useState(false);
     const [taskList, setTaskList] = useState({
         toDo: [],
         inProgress: [],
