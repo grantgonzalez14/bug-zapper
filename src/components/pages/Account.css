@@ -34,14 +34,16 @@
 }
 
 .name-container,
-.email-container {
+.email-container,
+.password-container {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
 .name-info,
-.email-info {
+.email-info,
+.password-info {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -59,6 +61,7 @@
     transition: all 0.3s ease-out;
     align-self: center;
     font-size: 20px;
+    text-decoration: none;
 }
 
 .btn-edit:hover {

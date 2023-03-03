@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth, editInformation } from '../../Firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { Button } from '../Button';
 import Navbar from '../Navbar';
 import './Account.css';
+import '../Button.css';
+
 
 
 function Account() {
@@ -82,6 +85,13 @@ function Account() {
                             <input type='email' name='' required='' placeholder=' ' onChange={(event) => {setNewEmail(event.target.value);}}/>
                             <label>Enter New Email</label>
                         </div>}
+                    </div>
+                    <div className='password-container'>
+                        <div className='password-info'>
+                            <h1>Password:</h1>
+                            <p>********</p>
+                            <Link className='btn-edit' to='/reset-password'>Reset Password</Link>
+                        </div>
                     </div>
                 </div>
             </div>
