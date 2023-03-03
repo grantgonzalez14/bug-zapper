@@ -26,7 +26,7 @@ function SignIn() {
             <Navbar />
             <div className='login-screen'>
                 <div className='login-box'>
-                    <h2>LOGIN</h2>
+                    <h2>SIGN IN</h2>
                     <form>
                         <div className='user-box'>
                             <input type='email' name='' required='' placeholder=' ' onChange={(event) => {setLoginEmail(event.target.value);}}/>

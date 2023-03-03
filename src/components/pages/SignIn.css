@@ -132,3 +132,9 @@ p.register {
     border: none;
     cursor: pointer;
 }
+
+@media screen and (max-width: 425px) {
+    .login-box {
+        width: 325px;
+    }
+}
