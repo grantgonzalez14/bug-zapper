@@ -13,8 +13,9 @@ import './BugList.css';
 function BugList() {
     const navigate = useNavigate();
 
+    const [onMobile, setOnMobile] = useState(isMobile);
     const [newTaskTitle, setNewTaskTitle] = useState('');
-    const [tasksActive, setTasksActive] = useState(isMobile);
+    const [tasksActive, setTasksActive] = useState(onMobile);
     const [inProgressActive, setInProgressActive] = useState(false);
     const [resolvedActive, setResolvedActive] = useState(false);
     const [taskList, setTaskList] = useState({
@@ -73,11 +74,21 @@ function BugList() {
         });
     }, [navigate]);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setOnMobile(window.innerWidth <= 960);
+            setTasksActive(onMobile);
+        }
+        
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, [onMobile]);
+
     return (
         <>
             <Navbar />
             <div className='bl-screen'>
-                {!isMobile && 
+                {!onMobile && 
                     <div className='bl-tasks'>
                         <h1>BUGS</h1>
                         <div className='new-task-input-container'>
@@ -90,7 +101,7 @@ function BugList() {
                         ))}
                     </div>
                 }
-                {!isMobile &&
+                {!onMobile &&
                     <div className='bl-in-progress'>
                         <h1>IN PROGRESS</h1>
                         <div className='divider'></div>
@@ -100,7 +111,7 @@ function BugList() {
                         ))}
                     </div>
                 }
-                {!isMobile &&
+                {!onMobile &&
                     <div className='bl-done'>
                         <h1>BUGS ZAPPED</h1>
                         <div className='divider'></div>
@@ -110,7 +121,7 @@ function BugList() {
                         ))}
                     </div>
                 }
-                {isMobile &&
+                {onMobile &&
                     <>
                         <div className='page-selector-container'>
                             <button className={tasksActive ? 'page-selector-active btn-create-task' : 'page-selector btn-create-task'} onClick={() => setActive('tasks')}>Tasks</button>
