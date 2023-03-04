@@ -6,7 +6,7 @@ function Task({task, removeFunction, changeStatusFunction}) {
         <>
             <div className='task-item'>
                 <ul>
-                    <li>{task.title}</li>
+                    <li className={task.status === 'resolved' ? 'task-resolved' : 'task-not-resolved'}>{task.title}</li>
                 </ul>
                 {task.status === 'to-do' && 
                 <select className='dropdown-menu' onChange={(event) => changeStatusFunction(task, event.target.value)}>

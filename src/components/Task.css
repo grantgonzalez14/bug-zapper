@@ -15,6 +15,14 @@
     align-items: center;
 }
 
+.task-not-resolved {
+    text-decoration: none;
+}
+
+.task-resolved {
+    text-decoration: line-through;
+}
+
 .dropdown-menu,
 .btn-remove-task {
     background-color: transparent;
