@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { sendPasswordReset } from '../../Firebase';
 import Navbar from '../Navbar';
 import './ResetPassword.css';
 
 function ResetPassword() {
     const [resetPasswordEmail, setResetPasswordEmail] = useState('');
+    const navigate = useNavigate();
+
+    const resetPassword = () => {
+        sendPasswordReset(resetPasswordEmail);
+        navigate('/');
+    }
 
     return (
         <>
@@ -18,7 +25,7 @@ function ResetPassword() {
                             <label>Email</label>
                         </div>
                         <div className='button-form'>
-                            <button className='submit' type='submit' onClick={() => sendPasswordReset(resetPasswordEmail)}>Submit</button>
+                            <button className='submit' type='submit' onClick={resetPassword}>Submit</button>
                         </div>
                     </form>
                 </div>

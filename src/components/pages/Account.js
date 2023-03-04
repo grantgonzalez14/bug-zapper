@@ -13,8 +13,8 @@ function Account() {
     const [newName, setNewName] = useState('');
     const [editEmail, setEditEmail] = useState(false);
     const [newEmail, setNewEmail] = useState('');
+    const [currentUser, setCurrentUser] = useState('');
 
-    const currentUser = auth.currentUser;
     const navigate = useNavigate();
 
     const updateInfo = () => {
@@ -50,6 +50,7 @@ function Account() {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (!user) navigate('/sign-in');
+            else setCurrentUser(auth.currentUser);
         });
     }, [navigate]);
 

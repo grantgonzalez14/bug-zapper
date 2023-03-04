@@ -26,8 +26,8 @@ function BugList() {
     const createNewTask = () => {
         if (!newTaskTitle) return;
 
-        setNewTaskTitle('');
         addNewTask({title: newTaskTitle, completed: false});
+        setNewTaskTitle('');
         getTaskList().then((tasks) => setTaskList(tasks));
         document.getElementById('new-task-input').value = '';
     }
