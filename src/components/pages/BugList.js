@@ -27,10 +27,12 @@ function BugList() {
     const createNewTask = () => {
         if (!newTaskTitle) return;
 
-        addNewTask({title: newTaskTitle, completed: false});
-        setNewTaskTitle('');
-        getTaskList().then((tasks) => setTaskList(tasks));
-        document.getElementById('new-task-input').value = '';
+        addNewTask({title: newTaskTitle, completed: false})
+            .then(() => {
+                setNewTaskTitle('');
+                getTaskList().then((tasks) => setTaskList(tasks));
+                document.getElementById('new-task-input').value = '';
+            });
     }
 
     const deleteTask = (taskData) => {
