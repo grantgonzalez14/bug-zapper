@@ -9,6 +9,13 @@
     --raisin-black: #242026;
     --pastel-red: #FC6767;
     --quick-silver: #A1A1A1;
+    --cyber-yellow: #FFD000;
+}
+
+ul {
+    margin-top: 10px;
+    margin-bottom: -35px;
+    color: var(--raisin-black);
 }
 
 .sign-up-container {
@@ -99,6 +106,61 @@
 
 .form-input > input:focus + .bar::before {
     transform: scaleX(1);
+}
+
+.password-strength-label {
+    font-size: 16px;
+    margin-right: 5px;
+    margin-left: 15px;
+    color: var(--raisin-black);
+    opacity: 0.6;
+}
+
+.password-strength-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    z-index: 10;
+    background-color: white;
+}
+
+.password-strength {
+    display: block;
+    height: 8.5px;
+    width: 100%;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: var(--raisin-black);
+}
+
+.form-input .password-strength span {
+    display: block;
+    
+}
+
+.weak,
+.average,
+.strong {
+    height: 5px;
+    border-radius: 10px;
+}
+
+.weak {
+    width: 33%;
+    background-color: red;
+    color: red;
+}
+
+.average {
+    width: 66%;
+    background-color: var(--cyber-yellow);
+    color: var(--cyber-yellow);
+}
+
+.strong {
+    width: 100%;
+    background-color: green;
+    color: green;
 }
 
 .form-button {
