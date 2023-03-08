@@ -95,7 +95,7 @@ function SignUp() {
                         <div className='password-strength-container'>
                             <div className='password-strength-label'>Strength</div>
                             <div className='password-strength'>
-                                <div className={passwordStrength}><span></span></div>
+                                <div className={passwordStrength}><span /></div>
                             </div>
                         </div>
                         }
