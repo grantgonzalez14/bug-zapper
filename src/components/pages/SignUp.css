@@ -12,16 +12,6 @@
     --cyber-yellow: #FFD000;
 }
 
-ul {
-    margin-top: 10px;
-    margin-bottom: -35px;
-    color: var(--raisin-black);
-}
-
-li {
-    margin-bottom: 5px;
-}
-
 .sign-up-container {
     display: grid;
     place-items: center;
@@ -50,6 +40,16 @@ li {
     background: linear-gradient(to left, var(--raisin-black), var(--medium-purple));
     border-radius: 1rem 1rem 100% 100%;
     z-index: -1;
+}
+
+.form ul {
+    margin-top: 10px;
+    margin-bottom: -35px;
+    color: var(--raisin-black);
+}
+
+.form li {
+    margin-bottom: 5px;
 }
 
 .form-title {
