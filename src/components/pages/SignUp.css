@@ -226,7 +226,7 @@
 
     .form > form {
         border-radius: inherit;
-        max-height: 26rem;
+        max-height: 30rem;
     }
 
     .form-button {
@@ -235,6 +235,10 @@
 
     .form-title {
         color: var(--medium-purple);
+    }
+
+    .password-strength {
+        height: 8px;
     }
 }
 
@@ -252,6 +256,10 @@
         max-width: 20rem;
         padding: 3rem 0;
         height: 100%;
+    }
+
+    .form > form {
+        max-height: 39rem;
     }
 
     .form-button {
