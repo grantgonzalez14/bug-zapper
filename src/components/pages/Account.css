@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 600px;
+    width: 700px;
     padding: 40px;
     background: var(--raisin-black);
     box-shadow: 0 15px 25px rgba(143, 124, 236, 0.7);
@@ -31,6 +31,7 @@
     margin-left: 5px;
 }
 
+.theme-container,
 .name-container,
 .email-container,
 .password-container {
@@ -39,6 +40,7 @@
     width: 100%;
 }
 
+.theme-info,
 .name-info,
 .email-info,
 .password-info {
@@ -48,6 +50,16 @@
     width: 100%;
     padding: 1rem;
     border-bottom: white solid;
+}
+
+
+
+.theme-info form {
+    font-size: 26px;
+}
+
+.theme-info form label {
+    margin-left: 1rem;
 }
 
 .btn-edit {

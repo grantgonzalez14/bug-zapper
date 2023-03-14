@@ -93,6 +93,16 @@ function Account() {
                             <Link className='btn-edit' to='/reset-password'>Reset Password</Link>
                         </div>
                     </div>
+                    <div className='theme-container'>
+                        <div className='theme-info'>
+                            <h1>Theme:</h1>
+                            <form type='radio'>
+                                <label><input type='radio' name=''/> Dark</label>
+                                <label><input type='radio' name=''/> Light</label>
+                                <label><input type='radio' name=''/> Use System Theme</label>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
