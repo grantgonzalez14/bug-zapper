@@ -36,6 +36,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
             name,
             authProvider: "local",
             email,
+            theme: 'system'
         });
 
         await updateProfile(user, {
@@ -158,6 +159,22 @@ const editInformation = async (field, info) => {
     }
 }
 
+const updateUserTheme = async (newTheme) => {
+    try {
+        const user = auth.currentUser;
+
+        if (newTheme === user.theme) return;
+
+        await updateProfile(user, {
+            theme: newTheme
+        });
+    }
+    catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
 export { 
     auth, 
     db, 
@@ -169,5 +186,6 @@ export {
     removeTask,
     changeTaskStatus,
     getTaskList,
-    editInformation
+    editInformation,
+    updateUserTheme
 };
