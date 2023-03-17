@@ -11,20 +11,20 @@ import './App.css';
 
 
 function App() {
-  return (
-    <>
-      <Router>
-        <Routes>
-          <Route path='/' exact element={<Home/>}/>
-          <Route path='/bug-list' element={<BugList/>}/>
-          <Route path='/sign-in' element={<SignIn/>}/>
-          <Route path='/sign-up' element={<SignUp/>}/>
-          <Route path='/reset-password' element={<ResetPassword/>}/>
-          <Route path='/account' element={<Account/>}/>
-        </Routes>
-      </Router>
-    </>
-  );
+	return (
+		<>
+			<Router>
+			<Routes>
+				<Route path='/' exact element={<Home/>}/>
+				<Route path='/bug-list' element={<BugList/>}/>
+				<Route path='/sign-in' element={<SignIn/>}/>
+				<Route path='/sign-up' element={<SignUp/>}/>
+				<Route path='/reset-password' element={<ResetPassword/>}/>
+				<Route path='/account' element={<Account/>}/>
+			</Routes>
+			</Router>
+		</>
+	);
 }
 
 export default App;

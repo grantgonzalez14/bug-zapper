@@ -27,6 +27,15 @@ function Navbar() {
         }
     };
 
+    // const detectUserTheme = () => {
+    //     if (window.matchMedia('prefers-color-scheme: dark')) {
+    //         return 'dark'
+    //     }
+    //     else if (window.matchMedia('prefers-color-scheme: light')) {
+    //         return 'light';
+    //     }
+    // }
+
     useEffect(() => {
         showButton();
     }, []);

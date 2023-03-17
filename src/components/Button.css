@@ -11,18 +11,10 @@
     cursor: pointer;
 }
 
-.btn--primary {
-    background-color: white;
-    color: var(--raisin-black);
-    border: 1px solid white;
-}
-
 .btn--outline {
     background-color: transparent;
-    color: white;
     padding: 8px 20px;
     margin: 0 5px;
-    border: 1px solid white;
     transition: all 0.3s ease-out;
 }
 
@@ -38,7 +30,43 @@
 
 .btn--medium:hover,
 .btn--large:hover {
-    background: white;
-    color: var(--raisin-black);
     transition: all 0.3s ease-out;
+}
+
+@media (prefers-color-scheme: light) {
+    .btn--primary {
+        background-color: var(--raisin-black);
+        color: white;
+        border: 1px solid var(--raisin-black);
+    }
+
+    .btn--outline {
+        color: var(--raisin-black);
+        border: 1px solid var(--raisin-black);
+    }
+
+    .btn--medium:hover,
+    .btn--large:hover {
+        background: var(--raisin-black);
+        color: white;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .btn--primary {
+        background-color: white;
+        color: var(--raisin-black);
+        border: 1px solid white;
+    }
+
+    .btn--outline {
+        color: white;
+        border: 1px solid white;
+    }
+
+    .btn--medium:hover,
+    .btn--large:hover {
+        background: white;
+        color: var(--raisin-black);
+    }
 }
