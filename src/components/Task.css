@@ -8,11 +8,22 @@
     width: 100%;
     height: auto;
     min-height: 40px;
+    align-items: center;
+}
+
+.task-item-container {
+    width: 100%;
     border-style: solid;
     border-color: var(--raisin-black);
     border-width: 0 0 3px 0;
     padding: 1rem 2.5rem 1rem 2rem;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    margin-top: 5px;
 }
 
 .task-not-resolved {
