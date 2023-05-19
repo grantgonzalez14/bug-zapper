@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, editInformation, updateUserTheme } from '../../Firebase';
+import { auth, editInformation } from '../../Firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import Navbar from '../Navbar';
 import './Account.css';
@@ -14,7 +14,7 @@ function Account() {
     const [editEmail, setEditEmail] = useState(false);
     const [newEmail, setNewEmail] = useState('');
     const [currentUser, setCurrentUser] = useState('');
-    const [theme, setTheme] = useState('system');
+    // const [theme, setTheme] = useState('system');
 
     const navigate = useNavigate();
 
@@ -48,19 +48,19 @@ function Account() {
         }
     }
 
-    const changeTheme = (newTheme) => {
-        setTheme(newTheme);
+    // const changeTheme = (newTheme) => {
+    //     setTheme(newTheme);
 
-        // Change theme in firebase here
-        updateUserTheme(newTheme);
-    }
+    //     // Change theme in firebase here
+    //     updateUserTheme(newTheme);
+    // }
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (!user) navigate('/sign-in');
             else {
                 setCurrentUser(auth.currentUser);
-                setTheme(auth.currentUser.theme);
+                // setTheme(auth.currentUser.theme);
             }
         });
     }, [navigate]);
@@ -104,7 +104,7 @@ function Account() {
                             <Link className='btn-edit' to='/reset-password'>Reset Password</Link>
                         </div>
                     </div>
-                    <div className='theme-container'>
+                    {/* <div className='theme-container'>
                         <div className='theme-info'>
                             <h1>Theme:</h1>
                             <form type='radio'>
@@ -113,7 +113,7 @@ function Account() {
                                 <label><input type='radio' name='' onChange={() => changeTheme('system')} checked={theme === 'system'}/> Use System Theme</label>
                             </form>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

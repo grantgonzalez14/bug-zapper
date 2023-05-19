@@ -159,21 +159,21 @@ const editInformation = async (field, info) => {
     }
 }
 
-const updateUserTheme = async (newTheme) => {
-    try {
-        const user = auth.currentUser;
+// const updateUserTheme = async (newTheme) => {
+//     try {
+//         const user = auth.currentUser;
 
-        if (newTheme === user.theme) return;
+//         if (newTheme === user.theme) return;
 
-        await updateProfile(user, {
-            theme: newTheme
-        });
-    }
-    catch (err) {
-        console.error(err);
-        alert(err.message);
-    }
-}
+//         await updateProfile(user, {
+//             theme: newTheme
+//         });
+//     }
+//     catch (err) {
+//         console.error(err);
+//         alert(err.message);
+//     }
+// }
 
 export { 
     auth, 
@@ -186,6 +186,5 @@ export {
     removeTask,
     changeTaskStatus,
     getTaskList,
-    editInformation,
-    updateUserTheme
+    editInformation
 };
