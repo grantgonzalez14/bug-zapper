@@ -35,6 +35,10 @@
     margin-right: 0.25rem;
 }
 
+.add-tag:hover {
+    cursor: pointer;
+}
+
 .task-not-resolved {
     text-decoration: none;
 }

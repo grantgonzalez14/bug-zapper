@@ -13,11 +13,15 @@ function Task({task, removeFunction, changeStatusFunction, updateFunction}) {
         }
         else if (updateType === 'add') {
             let tagName = window.prompt('Enter a new tag name');
+            if (tagName.length < 1) return;
             if (tagList === undefined) tagList = [];
             tagList.push(tagName);
         }
 
         updateTags(task, tagList);
+
+        // Update function is used to refresh the page after
+        // a tag is added or removed
         updateFunction();
     }
 
@@ -49,9 +53,9 @@ function Task({task, removeFunction, changeStatusFunction, updateFunction}) {
                     <button className='btn-remove-task' onClick={() => removeFunction(task)}>Remove</button>
                 </div>
                 <div className='tags'>
-                    <button className='add-tag' onClick={() => updateTagList('new Tag', 'add')}>+</button>
+                    <button className='add-tag' onClick={() => updateTagList('', 'add')}>+</button>
                     <p><strong>Tags:</strong></p>
-                    {(task.tags === undefined || task.tags.length === 0) && <h4>&nbsp;None</h4>}
+                    {(task.tags === undefined || task.tags.length === 0) && <p>&nbsp;None</p>}
                     {(task.tags !== undefined && task.tags.length > 0) && task.tags.map((tag, index) => (
                         <Tag key={index} name={tag} removeFunction={updateTagList} task={task} />
                     ))}
