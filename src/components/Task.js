@@ -1,8 +1,26 @@
 import React from 'react';
 import Tag from './Tag.js';
+import { updateTags } from '../Firebase.js';
 import './Task.css';
 
-function Task({task, removeFunction, changeStatusFunction}) {
+function Task({task, removeFunction, changeStatusFunction, updateFunction}) {
+    const updateTagList = (tagName, updateType) => {
+        let tagList = task.tags;
+        
+        if (updateType === 'delete') {
+            let tagIndex = tagList.indexOf(tagName);
+            tagList.splice(tagIndex, 1);
+        }
+        else if (updateType === 'add') {
+            let tagName = window.prompt('Enter a new tag name');
+            if (tagList === undefined) tagList = [];
+            tagList.push(tagName);
+        }
+
+        updateTags(task, tagList);
+        updateFunction();
+    }
+
     return (
         <>
             <div className='task-item-container'>
@@ -31,8 +49,12 @@ function Task({task, removeFunction, changeStatusFunction}) {
                     <button className='btn-remove-task' onClick={() => removeFunction(task)}>Remove</button>
                 </div>
                 <div className='tags'>
-                    <p><strong>Tags:&nbsp;&nbsp;</strong></p>
-                    <Tag name={'this is a Priority tag here'} />
+                    <button className='add-tag' onClick={() => updateTagList('new Tag', 'add')}>+</button>
+                    <p><strong>Tags:</strong></p>
+                    {(task.tags === undefined || task.tags.length === 0) && <h4>&nbsp;None</h4>}
+                    {(task.tags !== undefined && task.tags.length > 0) && task.tags.map((tag, index) => (
+                        <Tag key={index} name={tag} removeFunction={updateTagList} task={task} />
+                    ))}
                 </div>
             </div>
         </>

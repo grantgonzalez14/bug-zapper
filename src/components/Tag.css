@@ -1,21 +1,26 @@
 .tag-container {
     max-width: 10rem;
-    max-height: 1.5625rem;
     display: flex;
     justify-content: center;
     padding: 3px;
     border-radius: 5px;
     border-style: solid;
     border-color: var(--raisin-black);
+    border-width: 3px;
     font-size: 0.9rem;
     overflow-y: scroll;
-}
-
-.tag-container:hover {
-    cursor: pointer;
+    margin: 0 0.25rem;
     background-color: lightgray;
 }
 
 .remove-tag {
-    
+    margin: 0 0.4rem 0 0.125rem;
+    border: none;
+    background-color: transparent;
+    color: red;
+}
+
+.remove-tag:hover {
+    cursor: pointer;
+    color: darkred;
 }

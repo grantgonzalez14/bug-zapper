@@ -65,6 +65,10 @@ function BugList() {
         }
     }
 
+    const updateList = () => {
+        getTaskList().then((tasks) => setTaskList(tasks));
+    }
+
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -99,7 +103,7 @@ function BugList() {
                         </div>
                         {taskList.toDo.length === 0 && <h1 className='empty-task-list'>Nothing to do here!</h1>}
                         {taskList.toDo.map((task, index) => (
-                            <Task task={task} key={index} removeFunction={deleteTask} changeStatusFunction={changeStatus}/>
+                            <Task task={task} key={index} removeFunction={deleteTask} changeStatusFunction={changeStatus} updateFunction={updateList}/>
                         ))}
                     </div>
                 }
@@ -109,7 +113,7 @@ function BugList() {
                         <div className='divider'></div>
                         {taskList.inProgress.length === 0 && <h1 className='empty-task-list'>Nothing to do here!</h1>}
                         {taskList.inProgress.map((task, index) => (
-                            <Task task={task} key={index} removeFunction={deleteTask} changeStatusFunction={changeStatus}/>
+                            <Task task={task} key={index} removeFunction={deleteTask} changeStatusFunction={changeStatus} updateFunction={updateList}/>
                         ))}
                     </div>
                 }
@@ -119,7 +123,7 @@ function BugList() {
                         <div className='divider'></div>
                         {taskList.resolved.length === 0 && <h1 className='empty-task-list'>Nothing to do here!</h1>}
                         {taskList.resolved.map((task, index) => (
-                            <Task task={task} key={index} removeFunction={deleteTask} changeStatusFunction={changeStatus}/>
+                            <Task task={task} key={index} removeFunction={deleteTask} changeStatusFunction={changeStatus} updateFunction={updateList}/>
                         ))}
                     </div>
                 }

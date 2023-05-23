@@ -1,10 +1,13 @@
 import React from 'react';
 import './Tag.css';
 
-function Tag({name}) {
+function Tag({name, removeFunction}) {
     return (
         <>
-            <button className='tag-container'>{name}</button>
+            <div className='tag-container'>
+                <button className='remove-tag' onClick={() => removeFunction(name, 'delete')}>X</button>
+                {name}
+            </div>
         </>
     );
 }

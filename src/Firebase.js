@@ -71,7 +71,8 @@ const addNewTask = async (task) => {
             uid: user.uid,
             title: task.title,
             status: 'to-do',
-            completed: task.completed
+            completed: task.completed,
+            tags: []
         });
 
         await updateDoc(docRef, {id: docRef.id});
@@ -85,6 +86,17 @@ const addNewTask = async (task) => {
 const removeTask = async (task) => {
     try {
         await deleteDoc(doc(db, 'tasks', task.id));
+    }
+    catch (err) {
+        console.error(err);
+        alert(err);
+    }
+}
+
+const updateTags = async (task, tags) => {
+    try {
+        const docRef = doc(db, 'tasks', task.id);
+        await updateDoc(docRef, {tags: tags})
     }
     catch (err) {
         console.error(err);
@@ -184,6 +196,7 @@ export {
     logout, 
     addNewTask, 
     removeTask,
+    updateTags,
     changeTaskStatus,
     getTaskList,
     editInformation
